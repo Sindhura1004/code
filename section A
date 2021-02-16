@@ -1,0 +1,107 @@
+----------1 Program------------
+
+#include<stdio.h>
+int staticdemo();
+int main()
+{
+    int new;
+    for(int i=0;i<4;i++){
+       new = staticdemo();
+        printf("%d\t",new);
+    }
+
+    return 0;
+    
+}
+
+int staticdemo()
+{
+    static int a=4;
+    a=a+4;
+    return a;
+}
+
+------------3 program---------------
+#include<stdio.h>
+int a=10;
+int main(){
+    int b=20;
+    {
+        int c=30;
+        printf("third block %d\n",c);//c works only for this block
+        
+    }
+    printf("second block %d\n",b);// b gets initialized
+    //printf("third block %d",c);// throws error
+    
+    printf("frist block %d\n",a);
+    }
+
+
+--------------5 program--------------
+#include<stdio.h>
+#include<string.h>
+
+struct emp{
+    char id[5];
+    char name[10];
+    float sal[10];
+};
+
+int main(){
+    struct emp employee[3];
+    strcpy(employee[0].id,"123");
+    strcpy(employee[0].name,"Lucky");
+    strcpy(employee[0].sal,"8.0");
+    
+    printf("%s\n",employee[0].id);
+    printf("%s\n",employee[0].name);
+    printf("%s",employee[0].sal);
+    
+    return 0;
+}
+
+---------------7 Program------------------
+
+#include<stdio.h>
+#include<string.h>
+
+struct emp{
+    char id[5];
+    char name[10];
+    float sal[10];
+};
+
+
+int main(){
+    struct emp employee[3];
+    int nid,flag=0;
+    
+    for(int i=0;i<2;i++){
+        scanf("%s",employee[i].id);
+        scanf("%s",employee[i].name);
+        scanf("%s",employee[i].sal);
+    }
+    
+    for(int i=0;i<3;i++){
+        printf("emp id %s\n",employee[i].id);
+        printf("emp name %s\n",employee[i].name);
+        printf("emp sal %s\n",employee[i].sal);
+    }
+    
+    printf("enter the element to search:");
+    scanf("%s",&nid);
+    
+    for(int i=0;i<3;i++){
+        if(strcmp(nid,employee[i].id)==0){
+            flag=1;
+            break;
+        }
+        
+    }
+    
+    if(flag==1)
+    printf("employee found");
+    else
+    printf("not found");
+}
